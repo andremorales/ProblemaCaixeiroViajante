@@ -292,7 +292,8 @@ public class Principal extends javax.swing.JFrame {
         }
             cont++;
             
-                  
+             jTextArea1.append(" Distancia -> " + Integer.toString(dist));    
+             
             jTextArea1.append("\n");
             if(dist<min){
                 min=dist;
