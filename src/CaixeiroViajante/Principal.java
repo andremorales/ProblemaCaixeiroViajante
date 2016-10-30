@@ -7,7 +7,8 @@
 package CaixeiroViajante;
 
 import java.util.*;
-import java.awt.*; 
+import java.awt.*;
+
 
 /**
  *
@@ -112,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonSair)
                     .addComponent(buttonExecutar)))
         );
@@ -213,25 +214,33 @@ public class Principal extends javax.swing.JFrame {
         }
 
         for(i=0;i<numVertices;i++)
+            
         explorado[i]=0;
         jTextArea1.append("Todos os caminhos possiveis \n");
+        
+         
 
         nivel=0;    /* inicializa nivel */
         min=1000000;/* inicializa min */
 
+        
         dfs(0,0);
 
         /* Resultado */
-        jTextArea1.append("Acima todos os caminhos possiveis  \n");
+        jTextArea1.append("Acima todos os " + Integer.toString(cont) + " caminhos possíveis " + "\n");
         jTextArea1.append("-----------------------------------------\n");
         jTextArea1.append("Melhor ciclo obtido para " + Integer.toString(numVertices) + " vertices:    " + "\n");
 
+      
         for(i=0;i<numVertices;i++) {
+            
             if(i>0)
             jTextArea1.append("-");
 
+          
             jTextArea1.append(Integer.toString(melhorCiclo[i]));
         }
+        
         jTextArea1.append("\n");
         jTextArea1.append("----------------------------------------\n");
 
@@ -267,17 +276,23 @@ public class Principal extends javax.swing.JFrame {
         int i,j,dist;
         explorado[v]=1;
         ciclo[nivel]=v;
-        
-        
+       
+       
         if(nivel==(numVertices-1)){
             /* completou um ciclo */
             dist=medeciclo(ciclo);
-            for(i=0;i<numVertices;i++) {
-            if(i>0)
+        
+
+            for(i=0;i<numVertices;i++) {      
+                
+                if(i>0)
                 jTextArea1.append("-");
             
             jTextArea1.append(Integer.toString(ciclo[i]));
         }
+            cont++;
+            
+                  
             jTextArea1.append("\n");
             if(dist<min){
                 min=dist;
@@ -331,4 +346,7 @@ public class Principal extends javax.swing.JFrame {
     int [] explorado;           /* vetor para armazenar se o vertice foi explorado pelo DFS*/
     int nivel;                  /* profundidade alcancada pelo DFS*/
     int min;                    /* usado para selecionar o menor ciclo */
+    int cont ;                 /*contador de possibilidades*/
+    
+    
 }
